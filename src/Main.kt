@@ -60,3 +60,12 @@ fun main(){
 /////
 //println(solarSystem.contains("Pluto"))
 //println("Future Moon" in solarSystem)
+//println(solarSystem.size)
+//solarSystem.add("Pluto")
+//println(solarSystem.size)
+//println(solarSystem.contains("Pluto"))
+//solarSystem.add("Pluto")
+//println(solarSystem.size)
+//solarSystem.remove("Pluto")
+//solarSystem.add("Pluto")
+//println(solarSystem.size)
