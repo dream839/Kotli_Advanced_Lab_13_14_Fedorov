@@ -18,3 +18,5 @@ fun main(){
 //    println(question2.answer)
 //    println(question3.answer)
 //    println(question1.toString())
+//    println("${Quiz.answered} of ${Quiz.total} answered.")
+
