@@ -24,3 +24,4 @@ fun main(){
 //    println(question1.toString())
 //    println("${Quiz.answered} of ${Quiz.total} answered.")
 //Quiz.printProgressBar()
+//Quiz().printProgressBar()
