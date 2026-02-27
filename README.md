@@ -1,7 +1,7 @@
 # Лабораторная работа №13-14
 Коллекции, обобщения и функциональный стиль в Kotlin
 ## Описание
-Данная лабораторная работа посвящена изучению продвинутых возможностей языкаKotlin,которые активно используются при разработке Android-приложений.
+Данная лабораторная работа посвящена изучению продвинутых возможностей языка Kotlin, которые активно используются при разработке Android-приложений.
 В рамках работы рассматриваются:
 - обобщённые типы (Generics);
 - коллекции Kotlin;
@@ -11,9 +11,255 @@
 ## Как запустить проект
 1. Клонируйте репозиторий:
 ```bash
-git clone <URL_репозитория>
+git clone <https://github.com/xc8pt/Kotlin_Advanced_Lab_13_14_AbdulinRR.git>
 ```
+---
+## В этой лабораторной работе было изучено множество полезных функций и методов их применений, а именно:
+- Extension-функции (extension functions)
+- extension-функции с использованием интерфейсов
+- Scope-functions: доступ к свойствам и методамобъекта
+- Массивы в Kotlin
+- Lists (Списки)
+---
+### Extension-функции (extension functions)
+Пример использования:
+```kotlin
+override fun printProgressBar() {
+        repeat(Quiz.answered) {print("▓")}
+        repeat(Quiz.total - Quiz.answered) {print("▓")}
+        println()
+        println(progressText)
+    }
+```
+---
+### extension-функции с использованием интерфейсов
+Пример использования:
+```kotlin
+interface ProgressPrintable{
+    val progressText: String
+    fun printProgressBar()
+}
+class Quiz : ProgressPrintable {
+    override val progressText: String
+        get() = "${answered} of ${total} answered"
+}
+```
+---
+### Scope-functions: доступ к свойствам и методамобъекта
+Пример использования:
+```kotlin
+fun printQuiz(){
+        question1.let{
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+        }
+        println()
+        question2.let{
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+        }
+        println()
+        question3.let{
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+        }
+        println()
+    }
+```
+### Массивы в Kotlin
+Массив (Array) — это простейший способ хранить несколько значений одного типа данных.
+- массив состоит из элементов (items);
+- элементы упорядочены;
+- доступ к элементам осуществляется по индексу.
+---
+Пример использование:
+####  Создание массива
+```kotlin
+val rockPlanets = arrayOf("Mercury", "Venus", "Earth", "Mars")
+val gasPlanets = arrayOf("Jupiter", "Saturn", "Uranus", "Neptune")
+val solarSystem = rockPlanets + gasPlanets
+```
+---
+####  Доступ к элементам массива and Изменение элемента массива
+```kotlin
+   println(solarSystem[0])
+   println(solarSystem[1])
+   println(solarSystem[2])
+   solarSystem[3] = "Little Earth"
+   println(solarSystem[3])
+   println(solarSystem[4])
+   println(solarSystem[5])
+   println(solarSystem[6])
+   println(solarSystem[7])
+```
+---
+#### Ограничение размера массива
+```kotlin
+   solarSystem[8] = "Pluto"
+```
+---
+### Lists (Списки)
+List — это упорядоченная коллекция с изменяемым размером.
+Чаще всего она реализована поверх массива,
+который автоматически увеличивается при необходимости.
+- элементы хранятся по порядку;
+- можно вставлять элементы в середину списка в определённый индекс;
+- добавление и удаление элементов происходит «под капотом» за счёт пересоздания массива.
+---
+### List и MutableList
+В Kotlin коллекции описываются через интерфейсы.
+- List — интерфейс для только чтения упорядоченной коллекции.
+- MutableList — расширяет List и добавляет методы для изменения списка(add, remove и т.д.).
+---
+#### Функция listOf()
+```kotlin
+val solarSystem = mutableListOf(
+    "Mercury", "Venus", "Earth", "Mars",
+    "Jupiter", "Saturn", "Uranus", "Neptune"
+)
+println(solarSystem.size)
+```
+---
+#### Доступ к элементам списка
+```kotlin
+println(solarSystem[2])
+println(solarSystem.get(3))
+```
+---
+####  Добавление элементов (MutableList)
+```kotlin
+val solarSystem = mutableListOf(
+    "Mercury",
+    "Venus",
+    "Earth",
+    "Mars",
+    "Jupiter",
+    "Saturn",
+    "Uranus",
+    "Neptune" 
+)
+solarSystem.add("Pluto") 
+```
+---
+### Sets (Множества)
+Set — это коллекция без фиксированного порядка, которая не допускает дубликатов
+- элементы уникальны;
+- порядок элементов не гарантирован;
+- нет индексов.
+#### Использование MutableSet
+```kotlin
+val solarSystem = mutableSetOf(
+    "Mercury", "Venus", "Earth", "Mars",
+    "Jupiter", "Saturn", "Uranus", "Neptune"
+)
+```
+---
+### Map collection (Коллекция Map)
+Map — это коллекция, состоящая из ключей и значений.
+### Объявление Map
+- mapOf() — неизменяемая карта
+- mutableMapOf() — изменяемая карта
+---
+### Создание MutableMap
+Пример:
+```kotlin
+val solarSystem = mutableMapOf(
+    "Mercury" to 0,
+    "Venus" to 0,
+    "Earth" to 1,
+    "Mars" to 2,
+    "Jupiter" to 79,
+    "Saturn" to 82,
+    "Uranus" to 27,
+    "Neptune" to 14
+)
+println(solarSystem.size)
+```
+---
+###  Higher-order functions с коллекциями
+В этом шаге вы познакомитесь с рядом функций для коллекций:
+- forEach()
+- map()
+- filter()
+- groupBy()
+- fold()
+- sortedBy()
+---
+#### Использование forEach()
+```kotlin
+cookies.forEach {
+    println("Пункт меню: ${it.name}")
+}
+```
+---
+#### map()
+```kotlin
+val fullMenu = cookies.map{
+      "${it.name} - $${it.price}"
+   }
+   println("Полное меню:")
+   fullMenu.forEach {
+       println(it)
+   }
+``` 
+---
+#### filter()
+```kotlin
+val softBakedMenu = cookies.filter{
+    it.softBaked
+}
+    println("Мягкое печенье:")
+    softBakedMenu.forEach {
+        println("${it.name} - $${it.price}") 
+    }
+```
+---
+####  groupBy() для коллекций
+Функция groupBy() позволяет превратить список в Map, где:
+- ключ — результат функции, переданной в groupBy
+- значение — список элементов, для которых функция вернула этотключ
+
+Пример с нашими печеньками: сгруппируем их по свойству softBaked.
+```kotlin
+   val groupedMenu = cookies.groupBy { it.softBaked }
+   val softBakedMenu = groupedMenu[true] ?: emptyList()
+   val crunchyMenu = groupedMenu[false] ?: emptyList()
+   println("Soft cookies:")
+   softBakedMenu.forEach {
+       println("${it.name} - $${it.price}")
+   }
+   println("Crunchy cookies:")
+   crunchyMenu.forEach {
+       println("${it.name} - $${it.price}") 
+   }
+```
+---
+####  fold()
+Функция fold() аккумулирует значения коллекции в одно значение.
+```kotlin
+   val totalPrice = cookies.fold(0.0) { total, cookie ->
+       total + cookie.price
+   }
+   println("Total price: $${totalPrice}")
+```
+- 0.0 — начальное значение аккумулятора (total)
+- Лямбда { total, cookie -> total + cookie.price } вызывается для каждого элемента
+- Результат каждого вызова передается как total для следующего элемента
+---
+#### sortedBy()
+Функция sortedBy() сортирует коллекцию по значению свойства, указанного в лямбде.
+```kotlin
+val alphabeticalMenu = cookies.sortedBy { it.name }
+println("Меню в алфавитном порядке:")
+alphabeticalMenu.forEach {
+println(it.name)
+}
+```
+---
 ## Автор
-[Федоров Михаил Дмитриевич]
+Федоров Михаил Дмитриевич
 ## Лицензия
 Проект создан в учебных целях.
