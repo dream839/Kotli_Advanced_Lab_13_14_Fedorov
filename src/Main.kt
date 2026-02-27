@@ -17,3 +17,4 @@ fun main(){
 //    println(question1.answer)
 //    println(question2.answer)
 //    println(question3.answer)
+//    println(question1.toString())
