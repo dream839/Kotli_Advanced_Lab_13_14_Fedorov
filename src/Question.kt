@@ -16,5 +16,10 @@ class NumericQuestion(
 class Question<T>(
     val questionText: String,
     val answer: T,
-    val difficulty: String
+    val difficulty: Difficulty
 )
+enum class Difficulty{
+    EASY,
+    MEDIUM,
+    HARD
+}
