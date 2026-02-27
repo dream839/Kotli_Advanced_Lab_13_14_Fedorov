@@ -1,4 +1,8 @@
 fun main(){
+
+}
+//    println(Quiz.progressText)
+
 //    val question1 = Question<String>(
 //        "Речка спятила с ума - По домам пошла сама. ___",
 //        "водопровод",
@@ -19,4 +23,4 @@ fun main(){
 //    println(question3.answer)
 //    println(question1.toString())
 //    println("${Quiz.answered} of ${Quiz.total} answered.")
-
+//Quiz.printProgressBar()
