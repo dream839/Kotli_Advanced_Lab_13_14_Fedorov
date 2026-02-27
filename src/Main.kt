@@ -119,3 +119,8 @@ fun main(){
 //}
 //println("Total price: $${totalPrice}")
 //}
+//val alphabeticalMenu = cookies.sortedBy { it.name }
+//println("Меню в алфавитном порядке:")
+//alphabeticalMenu.forEach {
+//    println(it.name)
+//}
